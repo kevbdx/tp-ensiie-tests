@@ -76,3 +76,42 @@ describe("sumPrime", function() {
     }
   );
 });
+
+/*
+ * fizzBuzz retourne un tableau de 1 à n, où si le nombre est modulo 3 et/ou 5, il renverra "fizz" et/ou "buzz", le chiffre sinon.
+ */
+describe("fizzBuzz", function() {
+  test("Test fizz de 1", () => {
+    expect(Util.fizzBuzz(1)).toEqual([1]);
+  });
+  test("Test fizzBuzz 15", () => {
+    expect(Util.fizzBuzz(15)).toEqual([
+      1,
+      2,
+      "Fizz",
+      4,
+      "Buzz",
+      "Fizz",
+      7,
+      8,
+      "Fizz",
+      "Buzz",
+      11,
+      "Fizz",
+      13,
+      14,
+      "FizzBuzz"
+    ]);
+  });
+  test("Test fizz de 3", () => {
+    expect(Util.fizzBuzz(3)).toEqual([1, 2, "Fizz"]);
+  });
+  test("Test fizz et buzz de 5", () => {
+    expect(Util.fizzBuzz(5)).toEqual([1, 2, "Fizz", 4, "Buzz"]);
+  });
+  test("Test si le paramètre est une chaine de caractères => throw exception", () => {
+    expect(() => {
+      Util.fizzBuzz("string is given!");
+    }).toThrow("Unable to compute if n is NaN");
+  });
+});
