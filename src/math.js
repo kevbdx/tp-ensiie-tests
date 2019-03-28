@@ -1,18 +1,18 @@
 let Util = {};
-Util.factorial = (n) => {
-    if (n === 0) {
-        return 1;
-    }
+Util.factorial = n => {
+  if (n === 0) {
+    return 1;
+  }
 
-    if (n >= 3000) {
-        throw 'n too large'
-    }
+  if (n >= 3000) {
+    throw "n too large";
+  }
 
-    if (n < 0) {
-        throw 'n is negative'
-    }
+  if (n < 0) {
+    throw "n is negative";
+  }
 
-    return n * Util.factorial(n - 1);
+  return n * Util.factorial(n - 1);
 };
 
 /**
@@ -23,19 +23,16 @@ Util.factorial = (n) => {
  * @param {number} n
  * @returns {boolean}
  */
-Util.isPrime = function (n) {
-    if (n === 1 || n === 0) {
-        return false;
-    }
-    if (n < 0) {
-        throw 'Unable to compute prime for n < 0'
-    }
-    for (var i = 2; i < n; i++)
-        if (n % i === 0) return false;
-    return true;
-
+Util.isPrime = function(n) {
+  if (n === 1 || n === 0) {
+    return false;
+  }
+  if (n < 0) {
+    throw "Unable to compute prime for n < 0";
+  }
+  for (var i = 2; i < n; i++) if (n % i === 0) return false;
+  return true;
 };
-
 
 /**
  * Additionne l'ensemble des nombres premiers de 2 à n
@@ -47,7 +44,17 @@ Util.isPrime = function (n) {
  * @returns {number}
  */
 Util.sumPrime = function(n) {
-
+  var sum = 0;
+  if (isNaN(n)) {
+    throw "Unable to compute sumPrime if n is not a number";
+  }
+  if (n < 0) {
+    throw "Unable to compute sumPrime for n < 0";
+  }
+  for (var i = 2; i <= n; i++) {
+    if (Util.isPrime(i)) sum += i;
+  }
+  return sum;
 };
 
 /**
@@ -62,9 +69,7 @@ Util.sumPrime = function(n) {
  * @param {number} n
  * @returns {array}
  */
-Util.fizzBuzz = function(n) {
-
-};
+Util.fizzBuzz = function(n) {};
 
 /**
  * Chiffre une phrase selon la règle suivante : Les A deviennent des B, les B des C, etc.
@@ -75,10 +80,6 @@ Util.fizzBuzz = function(n) {
  * @param phrase
  * @returns {string}
  */
-Util.cipher = function (phrase) {
-
-};
-
+Util.cipher = function(phrase) {};
 
 module.exports = Util;
-
