@@ -1,18 +1,18 @@
 let Util = {};
-Util.factorial = (n) => {
-    if (n === 0) {
-        return 1;
-    }
+Util.factorial = n => {
+  if (n === 0) {
+    return 1;
+  }
 
-    if (n >= 3000) {
-        throw 'n too large'
-    }
+  if (n >= 3000) {
+    throw "n too large";
+  }
 
-    if (n < 0) {
-        throw 'n is negative'
-    }
+  if (n < 0) {
+    throw "n is negative";
+  }
 
-    return n * Util.factorial(n - 1);
+  return n * Util.factorial(n - 1);
 };
 
 /**
@@ -23,19 +23,16 @@ Util.factorial = (n) => {
  * @param {number} n
  * @returns {boolean}
  */
-Util.isPrime = function (n) {
-    if (n === 1 || n === 0) {
-        return false;
-    }
-    if (n < 0) {
-        throw 'Unable to compute prime for n < 0'
-    }
-    for (var i = 2; i < n; i++)
-        if (n % i === 0) return false;
-    return true;
-
+Util.isPrime = function(n) {
+  if (n === 1 || n === 0) {
+    return false;
+  }
+  if (n < 0) {
+    throw "Unable to compute prime for n < 0";
+  }
+  for (var i = 2; i < n; i++) if (n % i === 0) return false;
+  return true;
 };
-
 
 /**
  * Additionne l'ensemble des nombres premiers de 2 à n
@@ -46,9 +43,7 @@ Util.isPrime = function (n) {
  * @param {number} n
  * @returns {number}
  */
-Util.sumPrime = function(n) {
-
-};
+Util.sumPrime = function(n) {};
 
 /**
  * Cette méthode doit retourner un tableau de 1 à n tel que:
@@ -63,7 +58,27 @@ Util.sumPrime = function(n) {
  * @returns {array}
  */
 Util.fizzBuzz = function(n) {
+  var arr = [];
+  var s = "";
 
+  if (isNaN(n)) {
+    throw "Unable to compute if n is NaN";
+  }
+
+  for (var i = 1; i <= n; i++) {
+    s = "";
+    if (i % 3 == 0) {
+      s += "Fizz";
+    }
+    if (i % 5 == 0) {
+      s += "Buzz";
+    }
+    if (s == "") {
+      s = i;
+    }
+    arr.push(s);
+  }
+  return arr;
 };
 
 /**
@@ -75,10 +90,6 @@ Util.fizzBuzz = function(n) {
  * @param phrase
  * @returns {string}
  */
-Util.cipher = function (phrase) {
-
-};
-
+Util.cipher = function(phrase) {};
 
 module.exports = Util;
-
