@@ -125,7 +125,23 @@ class Interval {
    * @param {Interval} interval
    * @returns {Interval[]}
    */
-  exclusion(interval) {}
+  exclusion(interval) {
+    if (this.start == interval.start && this.end == interval.end) {
+      return [];
+    }
+    var intersectionToRemove = this.intersection(interval);
+    if (intersectionToRemove) {
+      return [
+        new Interval(
+          Math.min(this.start, interval.start),
+          intersectionToRemove.start
+        ),
+        new Interval(intersectionToRemove.end, Math.max(this.end, interval.end))
+      ];
+    } else {
+      return [this, interval];
+    }
+  }
 }
 
 module.exports = Interval;
