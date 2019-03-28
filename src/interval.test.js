@@ -37,7 +37,7 @@ describe("overlapse", function() {
 });
 
 /*
- * includes est une fonction qui retourne true si un interval a contient un interval b, false sinon
+ * includes est une fonction qui retourne true si un intervalle a contient un interval b, false sinon
  */
 describe("includes", function() {
   test("Upper interval", () => {
@@ -67,7 +67,8 @@ describe("includes", function() {
 });
 
 /*
- * union est une fonction qui retourne l'union de deux intervals sous forme de tableau
+ * union est une fonction qui retourne l'union de deux intervalles sous forme de tableau
+ * La fonction peut renvoyer plusieurs tableaux selon les cas
  */
 describe("Union", function() {
   test.each([
@@ -80,5 +81,22 @@ describe("Union", function() {
     [mainInterval, secondBoundTouchInterval, [new Interval(2, 10)]]
   ])("Union between %p and %p is equal to %p", (s1, s2, expected) => {
     expect(s1.union(s2)).toEqual(expected);
+  });
+});
+
+/*
+ * intersection est une fonction qui retourne l'intervalle correspondant à l'intersection de deux intervalles
+ */
+describe("Intersection", function() {
+  test.each([
+    [mainInterval, upperInterval, null],
+    [mainInterval, lowerInterval, null],
+    [mainInterval, insideInterval, new Interval(3, 6)],
+    [mainInterval, firstBoundInsideInterval, new Interval(3, 7)],
+    [mainInterval, secondBoundInsideInterval, new Interval(2, 6)],
+    [mainInterval, firstBoundTouchInterval, new Interval(2, 2)],
+    [mainInterval, secondBoundTouchInterval, new Interval(7, 7)]
+  ])("Intersection between %p and %p is equal to %p", (s1, s2, expected) => {
+    expect(s1.intersection(s2)).toEqual(expected);
   });
 });
