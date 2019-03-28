@@ -65,3 +65,20 @@ describe("includes", function() {
     expect(mainInterval.includes(mainInterval)).toBe(true);
   });
 });
+
+/*
+ * union est une fonction qui retourne l'union de deux intervals sous forme de tableau
+ */
+describe("Union", function() {
+  test.each([
+    [mainInterval, upperInterval, [new Interval(10, 12), new Interval(2, 7)]],
+    [mainInterval, lowerInterval, [new Interval(0, 1), new Interval(2, 7)]],
+    [mainInterval, insideInterval, [new Interval(2, 7)]],
+    [mainInterval, firstBoundInsideInterval, [new Interval(2, 9)]],
+    [mainInterval, secondBoundInsideInterval, [new Interval(-3, 7)]],
+    [mainInterval, firstBoundTouchInterval, [new Interval(0, 7)]],
+    [mainInterval, secondBoundTouchInterval, [new Interval(2, 10)]]
+  ])("Union between %p and %p is equal to %p", (s1, s2, expected) => {
+    expect(s1.union(s2)).toEqual(expected);
+  });
+});
