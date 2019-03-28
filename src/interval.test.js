@@ -100,3 +100,37 @@ describe("Intersection", function() {
     expect(s1.intersection(s2)).toEqual(expected);
   });
 });
+
+/*
+ * exclusion est une fonction qui retourne un ou plusieurs intervalle(s) correspondant à l'exclusion de deux intervalles
+ */
+describe("exclusion", function() {
+  test.each([
+    [mainInterval, upperInterval, [new Interval(2, 7), new Interval(10, 12)]],
+    [mainInterval, lowerInterval, [new Interval(2, 7), new Interval(0, 1)]],
+    [mainInterval, insideInterval, [new Interval(2, 3), new Interval(6, 7)]],
+    [
+      mainInterval,
+      firstBoundInsideInterval,
+      [new Interval(2, 3), new Interval(7, 9)]
+    ],
+    [
+      mainInterval,
+      secondBoundInsideInterval,
+      [new Interval(-3, 2), new Interval(6, 7)]
+    ],
+    [
+      mainInterval,
+      firstBoundTouchInterval,
+      [new Interval(0, 2), new Interval(2, 7)]
+    ],
+    [
+      mainInterval,
+      secondBoundTouchInterval,
+      [new Interval(2, 7), new Interval(7, 10)]
+    ],
+    [mainInterval, mainInterval, []]
+  ])("Exclusion between %p and %p is equal to %p", (s1, s2, expected) => {
+    expect(s1.exclusion(s2)).toEqual(expected);
+  });
+});
