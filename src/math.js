@@ -102,6 +102,20 @@ Util.fizzBuzz = function(n) {
  * @param phrase
  * @returns {string}
  */
-Util.cipher = function(phrase) {};
-
+Util.cipher = function(phrase) {
+  var strCipher = "";
+  for (var i = 0; i < phrase.length; i++) {
+    var char = phrase.charAt(i);
+    var charCode = phrase.charCodeAt(i);
+    if (
+      (charCode >= 65 && charCode <= 90) ||
+      (charCode >= 97 && charCode <= 122)
+    ) {
+      strCipher += String.fromCharCode(charCode + 1);
+    } else {
+      strCipher += char;
+    }
+  }
+  return strCipher;
+};
 module.exports = Util;

@@ -115,3 +115,34 @@ describe("fizzBuzz", function() {
     }).toThrow("Unable to compute if n is NaN");
   });
 });
+
+/*
+ * cipher retourne la chaine de caractères où les lettres prennent leur lettre suivante respective, les chiffres et autres caractères restent inchangés
+ */
+describe("cipher", function() {
+  test("Test cipher de 'Test Unitaire' (majuscules et minuscules) => 'Uftu Vojubjsf'", () => {
+    expect(Util.cipher("Test Unitaire")).toBe("Uftu Vojubjsf");
+  });
+  test("Test chaine de caractères contenant des chiffres 'test10 4uni4tair2e' => 'uftu10 4voj4ubjs2f'", () => {
+    expect(Util.cipher("test10 4uni4tair2e")).toBe("uftu10 4voj4ubjs2f");
+  });
+  test("Test chaine de caractères contenant caractères spéciaux 'test10@ !4uni4tair2e^$' => 'uftu10@ !4voj4ubjs2f^$'", () => {
+    expect(Util.cipher("test10@ !4uni4tair2e^$")).toBe(
+      "uftu10@ !4voj4ubjs2f^$"
+    );
+  });
+  test("Test chaine de caractères contenant de la ponctuation 'test10... 4uni4tair2e ??' => 'uftu10... 4voj4ubjs2f ??'", () => {
+    expect(Util.cipher("test10... 4uni4tair2e ??")).toBe(
+      "uftu10... 4voj4ubjs2f ??"
+    );
+  });
+  test("Test chaine de caractères contenant des accents 'testé àààééôîp:,;' => 'uftué àààééôîq:,;'", () => {
+    expect(Util.cipher("testé àààééôîp:,;")).toBe("uftué àààééôîq:,;");
+  });
+  test("Test chaine de caractères qu'un nombre '1'  => '1'", () => {
+    expect(Util.cipher("1")).toBe("1");
+  });
+  test("Test chaine de caractères qu'un caractère spécial '@'  => '@'", () => {
+    expect(Util.cipher("@")).toBe("@");
+  });
+});
