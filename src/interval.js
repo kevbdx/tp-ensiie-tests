@@ -93,7 +93,21 @@ class Interval {
    * @param {Interval} interval
    * @returns {Interval|null}
    */
-  intersection(interval) {}
+  intersection(interval) {
+    if (!this.overlaps(interval)) {
+      if (this.start == interval.end) {
+        return new Interval(this.start, this.start);
+      } else if (interval.start == this.end) {
+        return new Interval(interval.start, interval.start);
+      }
+      return null;
+    } else {
+      return new Interval(
+        Math.max(this.start, interval.start),
+        Math.min(this.end, interval.end)
+      );
+    }
+  }
 
   /**
    * Retourne l'exclusion de deux intervals
