@@ -5,6 +5,9 @@ module.exports = function(config) {
     reporters: ["clear-text", "progress", "dashboard"],
     testRunner: "jest",
     transpilers: [],
-    coverageAnalysis: "off"
+    coverageAnalysis: "off",
+    thresholds: {
+      break: 99
+    }
   });
 };
