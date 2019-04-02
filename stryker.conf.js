@@ -7,7 +7,7 @@ module.exports = function(config) {
     transpilers: [],
     coverageAnalysis: "off",
     thresholds: {
-      break: 80
+      break: 0
     }
   });
 };
