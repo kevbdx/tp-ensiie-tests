@@ -7,3 +7,4 @@ before_install:
 
 script:
   - npm run test:cov
+  - stryker run
