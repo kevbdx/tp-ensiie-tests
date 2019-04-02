@@ -21,5 +21,16 @@
   "homepage": "https://github.com/Kirouane/test-tp#readme",
   "devDependencies": {
     "jest": "^24.1.0"
+  },
+  "jest": {
+    "verbose": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 80,
+        "lines": 90,
+        "statements": 90
+      }
+    }
   }
 }
